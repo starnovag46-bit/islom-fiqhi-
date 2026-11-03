@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> — Islom fiqhi portali </title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Amiri & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldDeep: '#0F3D2E',
+                        emeraldLight: '#1A533E',
+                        goldAccent: '#D4AF37',
+                        goldHover: '#B89528',
+                        creamBg: '#F8F9F5',
+                        creamCard: '#FFFFFF',
+                        slateText: '#1E293B',
+                        mutedText: '#64748B'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        arabic: ['Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .arabic-text {
+            font-family: 'Amiri', serif;
+        }
+        .pattern-bg {
+            background-color: #0F3D2E;
+            background-image: radial-gradient(#D4AF37 0.75px, transparent 0.75px), radial-gradient(#D4AF37 0.75px, #0F3D2E 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            background-opacity: 0.05;
+        }
+        .glass-header {
+            background: rgba(15, 61, 46, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-creamBg text-slateText font-sans antialiased selection:bg-goldAccent selection:text-emeraldDeep flex flex-col min-h-screen">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="glass-header text-white sticky top-0 z-50 shadow-md border-b border-goldAccent/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-12 h-12 rounded-full bg-goldAccent/20 border border-goldAccent flex items-center justify-center text-goldAccent text-2xl font-bold shadow-inner">
+                        <i class="fa-solid font-arabic">ف</i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-bold tracking-tight text-white block leading-none">AL-FIQH</span>
+                        <span class="text-xs text-goldAccent tracking-widest uppercase">Islom Huquqshunosligi Portali</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex space-x-1 lg:space-x-2 text-sm font-medium">
+                    <a href="#hero" class="px-3 py-2 rounded-lg text-gray-200 hover:text-goldAccent hover:bg-white/5 transition">Asosiy</a>
+                    <a href="#bo-limlar" class="px-3 py-2 rounded-lg text-gray-200 hover:text-goldAccent hover:bg-white/5 transition">Bo'limlar</a>
+                    <a href="#mazhablar" class="px-3 py-2 rounded-lg text-gray-200 hover:text-goldAccent hover:bg-white/5 transition">Mazhablar</a>
+                    <a href="#kutubxona" class="px-3 py-2 rounded-lg text-gray-200 hover:text-goldAccent hover:bg-white/5 transition">Kutubxona</a>
+                    <a href="#istilohlar" class="px-3 py-2 rounded-lg text-gray-200 hover:text-goldAccent hover:bg-white/5 transition">Istilohlar</a>
+                    <a href="#test" class="px-3 py-2 bg-goldAccent text-emeraldDeep font-semibold rounded-lg hover:bg-goldHover transition shadow-sm">Bilimni Sinash</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md text-gray-300 hover:text-white hover:bg-emeraldLight focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emeraldDeep border-b border-goldAccent/20 px-4 pt-2 pb-4 space-y-2">
+            <a href="#hero" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-emeraldLight">Asosiy</a>
+            <a href="#bo-limlar" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-emeraldLight">Bo'limlar</a>
+            <a href="#mazhablar" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-emeraldLight">Mazhablar</a>
+            <a href="#kutubxona" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-emeraldLight">Kutubxona</a>
+            <a href="#istilohlar" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:bg-emeraldLight">Istilohlar</a>
+            <a href="#test" class="block px-3 py-2 rounded-md text-base font-semibold bg-goldAccent text-emeraldDeep text-center">Bilimni Sinash</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative bg-emeraldDeep text-white py-20 lg:py-28 overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pattern-bg pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-goldAccent/15 border border-goldAccent/40 text-goldAccent text-xs sm:text-sm font-semibold tracking-wide uppercase mb-4">
+                    O'quv-Uslubiy va Ilmiy-Amaliy Portal
+                </span>
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                    Fiqh Fani Bo'yicha Zamonaviy Ta'lim Portali
+                </h1>
+                <p class="text-base sm:text-lg text-emerald-100/90 leading-relaxed mb-8">
+                    Klassik islomiy manbalar, mo'tabar fiqhiy matnlar hamda zamonaviy akademik standartlar asosida fiqh ilmini tizimli o'rganish platformasi.
+                </p>
+
+                <!-- Search Input Bar -->
+                <div class="relative max-w-2xl mx-auto">
+                    <div class="relative flex items-center">
+                        <input type="text" id="globalSearch" placeholder="Fiqhiy iboralar, manbalar yoki mavzular bo'yicha izlang..." 
+                            class="w-full pl-12 pr-28 py-4 bg-white text-slateText rounded-2xl shadow-xl focus:outline-none focus:ring-2 focus:ring-goldAccent text-sm sm:text-base transition">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 text-emeraldDeep text-lg"></i>
+                        <button onclick="handleGlobalSearch()" class="absolute right-2 px-5 py-2.5 bg-emeraldDeep text-goldAccent font-semibold rounded-xl hover:bg-emeraldLight transition text-sm">
+                            Qidirish
+                        </button>
+                    </div>
+                    <div id="searchResults" class="hidden absolute top-full left-0 right-0 mt-2 bg-white rounded-xl shadow-2xl text-slateText text-left z-50 max-h-60 overflow-y-auto border border-gray-100 divide-y"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Banner / Quote -->
+        <div class="mt-12 border-t border-white/10 pt-6 text-center text-xs sm:text-sm text-goldAccent/80 font-arabic italic">
+            "مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ" — "Alloh kimga yaxshilikni iroda qilsa, uni dinda faqih (teran tushunuvchi) qilib qo'yadi." (Buxoriy)
+        </div>
+    </section>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20 w-full">
+
+        <!-- CORE FIQH MODULES SECTION -->
+        <section id="bo-limlar" class="scroll-mt-24">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-emeraldDeep">Fiqh Fanining Asosiy Bo'limlari</h2>
+                <div class="w-16 h-1 bg-goldAccent mx-auto mt-2 rounded-full"></div>
+                <p class="text-mutedText mt-2 text-sm sm:text-base">Islom huquqshunosligi qamrab olgan asosiy sohalar va mavzular</p>
+            </div>
+
+            <!-- Tab Navigation Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="moduleTabs">
+                <button onclick="switchTab('ibodat')" id="tab-ibodat" class="tab-btn active-tab px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm border border-emeraldDeep bg-emeraldDeep text-white">
+                    <i class="fa-solid fa-kaaba mr-2 text-goldAccent"></i>Ibodatlar (Ibodot)
+                </button>
+                <button onclick="switchTab('muomalot')" id="tab-muomalot" class="tab-btn px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm border border-gray-200 bg-white text-slateText hover:border-emeraldDeep">
+                    <i class="fa-solid fa-handshake mr-2 text-emeraldDeep"></i>Muomalot (Iqtisod & Savdo)
+                </button>
+                <button onclick="switchTab('oila')" id="tab-oila" class="tab-btn px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm border border-gray-200 bg-white text-slateText hover:border-emeraldDeep">
+                    <i class="fa-solid fa-people-roof mr-2 text-emeraldDeep"></i>Oila Huquqi (Munokahot)
+                </button>
+                <button onclick="switchTab('uqubot')" id="tab-uqubot" class="tab-btn px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-sm border border-gray-200 bg-white text-slateText hover:border-emeraldDeep">
+                    <i class="fa-solid fa-scale-balanced mr-2 text-emeraldDeep"></i>Jinoyat va Jazo (Uqubot)
+                </button>
+            </div>
+
+            <!-- Tab Content Cards -->
+            <div id="tabContent" class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-gray-100">
+                <!-- Content injected by JavaScript -->
+            </div>
+        </section>
+
+        <!-- SCHOOLS OF JURISPRUDENCE (MAZHABLAR) -->
+        <section id="mazhablar" class="scroll-mt-24">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-emeraldDeep">Ahl as-Sunna Fiqhiy Mazhablari</h2>
+                <div class="w-16 h-1 bg-goldAccent mx-auto mt-2 rounded-full"></div>
+                <p class="text-mutedText mt-2 text-sm sm:text-base">To'rt mo'tabar fiqhiy maktab, ularning asoschilari va uslubiy qoidalari</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Hanafi -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-goldAccent/50 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-emeraldDeep/10 text-emeraldDeep text-xs font-bold rounded-full">Eng Yirik Mazhab</span>
+                            <i class="fa-solid fa-book-quran text-goldAccent text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-emeraldDeep mb-1">Hanafiya Mazhabi</h3>
+                        <p class="text-xs text-mutedText italic mb-3">Asoschi: Imom A'zam Abu Hanifa (r.a.)</p>
+                        <p class="text-sm text-slateText leading-relaxed mb-4">
+                            Ray (aql-idrok), istihson va urfga keng o'rin berishi bilan ajralib turadi. Movarounnahrda keng tarqalgan.
+                        </p>
+                    </div>
+                    <button onclick="openMazhabModal('hanafi')" class="w-full py-2 bg-creamBg hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-medium text-sm rounded-xl transition border border-emeraldDeep/20">
+                        Batafsil O'rganish
+                    </button>
+                </div>
+
+                <!-- Maliki -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-goldAccent/50 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-emeraldDeep/10 text-emeraldDeep text-xs font-bold rounded-full">Madina Maktabi</span>
+                            <i class="fa-solid fa-mosque text-goldAccent text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-emeraldDeep mb-1">Molikiya Mazhabi</h3>
+                        <p class="text-xs text-mutedText italic mb-3">Asoschi: Imom Molik ibn Anas (r.a.)</p>
+                        <p class="text-sm text-slateText leading-relaxed mb-4">
+                            Madina ahlining amali va maslahat al-mursala (umumiylik manfaati) uslubiga alohida e'tibor qaratadi.
+                        </p>
+                    </div>
+                    <button onclick="openMazhabModal('maliki')" class="w-full py-2 bg-creamBg hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-medium text-sm rounded-xl transition border border-emeraldDeep/20">
+                        Batafsil O'rganish
+                    </button>
+                </div>
+
+                <!-- Shafi'i -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-goldAccent/50 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-emeraldDeep/10 text-emeraldDeep text-xs font-bold rounded-full">Usul Asoschisi</span>
+                            <i class="fa-solid fa-scroll text-goldAccent text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-emeraldDeep mb-1">Shofi'iya Mazhabi</h3>
+                        <p class="text-xs text-mutedText italic mb-3">Asoschi: Imom Muhammad Shofi'iy (r.a.)</p>
+                        <p class="text-sm text-slateText leading-relaxed mb-4">
+                            Usul ul-fiqh ilmini birinchi bo'lib tizimlashtirgan. Hadis va qiyos o'rtasidagi oltin muvozanat.
+                        </p>
+                    </div>
+                    <button onclick="openMazhabModal('shafi')" class="w-full py-2 bg-creamBg hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-medium text-sm rounded-xl transition border border-emeraldDeep/20">
+                        Batafsil O'rganish
+                    </button>
+                </div>
+
+                <!-- Hanbali -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 hover:border-goldAccent/50 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 bg-emeraldDeep/10 text-emeraldDeep text-xs font-bold rounded-full">Nassga Sodiq</span>
+                            <i class="fa-solid fa-feather text-goldAccent text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-emeraldDeep mb-1">Hanbaliya Mazhabi</h3>
+                        <p class="text-xs text-mutedText italic mb-3">Asoschi: Imom Ahmad ibn Hanbal (r.a.)</p>
+                        <p class="text-sm text-slateText leading-relaxed mb-4">
+                            Hadis va asarlarga qat'iy tayanishi, zaif hadisni ham qiyosdan ustun qo'yishi bilan ajralib turadi.
+                        </p>
+                    </div>
+                    <button onclick="openMazhabModal('hanbali')" class="w-full py-2 bg-creamBg hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-medium text-sm rounded-xl transition border border-emeraldDeep/20">
+                        Batafsil O'rganish
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- LIBRARY OF CLASSICAL BOOKS -->
+        <section id="kutubxona" class="scroll-mt-24">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-emeraldDeep">Mo'tabar Fiqhiy Manbalar Kutubxonasi</h2>
+                <div class="w-16 h-1 bg-goldAccent mx-auto mt-2 rounded-full"></div>
+                <p class="text-mutedText mt-2 text-sm sm:text-base">Mintaqaviy va mumtoz (mutaqaddimun) fiqhiy asarlar manbalari</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Book 1 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-goldAccent/10 rounded-bl-full flex items-top justify-end p-3">
+                        <i class="fa-solid fa-book text-goldAccent text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-goldHover tracking-wider uppercase">Shoh Asar</span>
+                        <h3 class="text-xl font-bold text-emeraldDeep mt-1">Al-Hidoya</h3>
+                        <p class="text-xs text-mutedText italic mb-3">Muallif: Burhoniddin al-Marg'inoni</p>
+                        <p class="text-sm text-slateText leading-relaxed mb-4">
+                            Hanafiya mazhabining eng mo'tabar va mukammal darslik asari. Fiqhiy dalillar va munozaralarning yuksak namunasi.
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-2 pt-4 border-t border-gray-100">
+                        <button onclick="readBook('al-hidoya')" class="flex-1 py-2 bg-emeraldDeep text-white text-xs font-semibold rounded-lg hover:bg-emeraldLight transition text-center">
+                            <i class="fa-solid fa-eye mr-1"></i> Mutolaa qil
+                        </button>
+                        <button onclick="downloadAlert('Al-Hidoya')" class="p-2 border border-gray-200 text-slateText rounded-lg hover:bg-gray-50 transition" title="Yuklab olish">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 2 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-goldAccent/10 rounded-bl-full flex items-top justify-end p-3">
+                        <i class="fa-solid fa-book text-goldAccent text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-emeraldDeep tracking-wider uppercase">Boshlang'ich Matn</span>
+                        <h3 class="text-xl font-bold text-emeraldDeep mt-1">Mukhtasar al-Quduri</h3>
+                        <p class="text-xs text-mutedText italic mb-3">Muallif: Abul-Hasan al-Quduri</p>
+                        <p class="text-sm text-slateText leading-relaxed mb-4">
+                            "Al-Kitob" nomi bilan mashhur bo'lgan, fiqhning barcha boblarini qisqa va loqin tarzda bayon etgan manba.
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-2 pt-4 border-t border-gray-100">
+                        <button onclick="readBook('quduri')" class="flex-1 py-2 bg-emeraldDeep text-white text-xs font-semibold rounded-lg hover:bg-emeraldLight transition text-center">
+                            <i class="fa-solid fa-eye mr-1"></i> Mutolaa qil
+                        </button>
+                        <button onclick="downloadAlert('Mukhtasar al-Quduri')" class="p-2 border border-gray-200 text-slateText rounded-lg hover:bg-gray-50 transition" title="Yuklab olish">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Book 3 -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-16 h-16 bg-goldAccent/10 rounded-bl-full flex items-top justify-end p-3">
+                        <i class="fa-solid fa-book text-goldAccent text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-semibold text-emeraldDeep tracking-wider uppercase">Muqoyasali Fiqh</span>
+                        <h3 class="text-xl font-bold text-emeraldDeep mt-1">Badoi' us-Sanoi'</h3>
+                        <p class="text-xs text-mutedText italic mb-3">Muallif: Alauddin al-Kosani</p>
+                        <p class="text-sm text-slateText leading-relaxed mb-4">
+                            Movarounnahr fiqh maktabining eng tartibli va mantiqiy tuzilishga ega mukammal ensiklopedik asari.
+                        </p>
+                    </div>
+                    <div class="flex items-center space-x-2 pt-4 border-t border-gray-100">
+                        <button onclick="readBook('badoi')" class="flex-1 py-2 bg-emeraldDeep text-white text-xs font-semibold rounded-lg hover:bg-emeraldLight transition text-center">
+                            <i class="fa-solid fa-eye mr-1"></i> Mutolaa qil
+                        </button>
+                        <button onclick="downloadAlert('Badoi us-Sanoi')" class="p-2 border border-gray-200 text-slateText rounded-lg hover:bg-gray-50 transition" title="Yuklab olish">
+                            <i class="fa-solid fa-download"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GLOSSARY SECTION (ISTILOHLAR LUG'ATI) -->
+        <section id="istilohlar" class="scroll-mt-24">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl font-bold text-emeraldDeep">Fiqhiy Istilohlar va Qoidalar Lug'ati</h2>
+                        <p class="text-mutedText text-sm mt-1">Talabalar uchun muhim taklif va tushunchalar izohi</p>
+                    </div>
+                    <div class="w-full md:w-72">
+                        <input type="text" id="glossarySearch" onkeyup="filterGlossary()" placeholder="Termin izlash (masalan: Farz)..." 
+                            class="w-full px-4 py-2 bg-creamBg border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-goldAccent">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" id="glossaryGrid">
+                    <!-- Cards will be populated by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SELF ASSESSMENT QUIZ (TEST) -->
+        <section id="test" class="scroll-mt-24">
+            <div class="bg-emeraldDeep text-white rounded-3xl p-6 sm:p-10 relative overflow-hidden shadow-xl">
+                <div class="absolute right-0 bottom-0 opacity-10 pattern-bg w-full h-full pointer-events-none"></div>
+                
+                <div class="max-w-3xl mx-auto relative z-10">
+                    <div class="text-center mb-8">
+                        <span class="px-3 py-1 bg-goldAccent/20 text-goldAccent text-xs font-bold rounded-full uppercase tracking-wider">Interaktiv Imtihon</span>
+                        <h2 class="text-2xl sm:text-4xl font-extrabold mt-2">Fiqhiy Bilimlarni Sinash</h2>
+                        <p class="text-emerald-100/80 text-sm mt-2">Quyidagi savollarga javob berib, o'z bilim darajangizni tekshiring</p>
+                    </div>
+
+                    <!-- Quiz Container -->
+                    <div id="quizContainer" class="bg-white text-slateText rounded-2xl p-6 sm:p-8 shadow-lg">
+                        <!-- Questions dynamically injected -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-emeraldDeep text-white border-t border-goldAccent/20 pt-12 pb-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 rounded-full bg-goldAccent/20 border border-goldAccent flex items-center justify-center text-goldAccent font-bold text-xl">
+                            <i class="fa-solid font-arabic">ف</i>
+                        </div>
+                        <span class="text-xl font-bold tracking-tight text-white">AL-FIQH</span>
+                    </div>
+                    <p class="text-emerald-100/70 text-sm leading-relaxed max-w-sm">
+                        O'zbekiston oliy ta'lim muassasalarining Islomshunoslik va Fiqh yo'nalishi talabalari hamda mustaqil o'rganuvchilar uchun maxsus yaratilgan raqamli portal.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-goldAccent font-semibold text-sm uppercase tracking-wider mb-4">Tezkor Havolalar</h4>
+                    <ul class="space-y-2 text-sm text-emerald-100/80">
+                        <li><a href="#hero" class="hover:text-goldAccent transition">Asosiy Sahifa</a></li>
+                        <li><a href="#bo-limlar" class="hover:text-goldAccent transition">Fiqh Bo'limlari</a></li>
+                        <li><a href="#mazhablar" class="hover:text-goldAccent transition">Fiqhiy Mazhablar</a></li>
+                        <li><a href="#kutubxona" class="hover:text-goldAccent transition">Elektron Kutubxona</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-goldAccent font-semibold text-sm uppercase tracking-wider mb-4">Bog'lanish</h4>
+                    <p class="text-sm text-emerald-100/80 mb-2"><i class="fa-solid fa-envelope mr-2 text-goldAccent"></i> info@al-fiqh.uz</p>
+                    <p class="text-sm text-emerald-100/80 mb-4"><i class="fa-solid fa-graduation-cap mr-2 text-goldAccent"></i> Oliy Ma'had & Universitetlar</p>
+                    <div class="flex space-x-3 text-goldAccent">
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 border border-goldAccent/30 flex items-center justify-center hover:bg-goldAccent hover:text-emeraldDeep transition"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-white/5 border border-goldAccent/30 flex items-center justify-center hover:bg-goldAccent hover:text-emeraldDeep transition"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-6 text-center text-xs text-emerald-100/60">
+                <p>&copy; 2026 AL-FIQH Portali. Barcha huquqlar hamkorlikda himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL FOR MAZHAB DETAILS -->
+    <div id="mazhabModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeMazhabModal()" class="absolute top-4 right-4 text-gray-400 hover:text-slateText text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="mazhabModalContent">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL FOR BOOK PREVIEW -->
+    <div id="bookModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-2xl max-w-3xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="closeBookModal()" class="absolute top-4 right-4 text-gray-400 hover:text-slateText text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="bookModalContent">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA: Core Modules Content
+        const moduleData = {
+            ibodat: {
+                title: "Ibodat Fiqhi (Ibodot)",
+                desc: "Insonning Yaratgan Parvardigori oldidagi burchlari va toat-ibodatlari tartibini o'rgatuvchi bo'lim.",
+                items: [
+                    { title: "Tahorat va Poklik (Tahorat)", text: "Tahoratning farzlari, sunnatlari, g'usl, tayammum va najosatdan poklanish hukmlari." },
+                    { title: "Namoz (Salot)", text: "Namozning shartlari, rukunlari, vaqtlari, jamoat va juma namozlari tartibi." },
+                    { title: "Zakor (Zakot)", text: "Nisob miqdori, zakot beriladigan mollar va haqdor toifalar bayoni." },
+                    { title: "Ro'za (Siyom)", text: "Ramazon ro'zasi, niyat, ro'zani buzadigan va buzmaydigan amallar." },
+                    { title: "Haj va Umra", text: "Ehrom, Tavof, Sa'y va Arafotda turish kabi Haj ruknlari qoidalari." }
+                ]
+            },
+            muomalot: {
+                title: "Muomalot va Iqtisodiyot",
+                desc: "Jamiyat a'zolari o'rtasidagi iqtisodiy, moliyaviy va fuqarolik munosabatlarini tartibga soladi.",
+                items: [
+                    { title: "Oldi-Sotdi (Bay')", text: "Savdo bitimlarining shartlari, sahih va fosite savdo turlari." },
+                    { title: "Ribo (Suxur/Sudxo'rlik)", text: "Riboning turlari, uning haromlik sabablari va zamonaviy bank amaliyotlari." },
+                    { title: "Ira va Ijora", text: "Xizmat ko'rsatish, mulkni ijaraga berish va mehnat shartnomalari hukmlari." },
+                    { title: "Sherikchilik (Sharika)", text: "Mudaraba, Inan va boshqa sherikchilik shakllari va foyda taqsimoti." }
+                ]
+            },
+            oila: {
+                title: "Oila Huquqi (Munokahot)",
+                desc: "Oila qurish, nikoh, taloq, va meros kabi ijtimoiy munosabatlar majmui.",
+                items: [
+                    { title: "Nikoh va Mahr", text: "Nikoh shartlari, sovchilik, mahr miqdori va er-xotinning huquqlari." },
+                    { title: "Taloq va Iddat", text: "Oila ajralishi hukmlari, taloq turlari va iddat muddatlari." },
+                    { title: "Nafaqa va Hizanat", text: "Oila a'zolarini ta'minlash va yosh bolalarni tarbiya qilish mas'uliyati." },
+                    { title: "Meros Ilmi (Faroiz)", text: "Vafot etgan kishining mol-mulkini vorislar o'rtasida shariat bo'yicha taqsimlash." }
+                ]
+            },
+            uqubot: {
+                title: "Jinoyat va Jazo Huquqi (Uqubot)",
+                desc: "Jamiyatda tartib va xavfsizlikni saqlashga qaratilgan jazolar tizimi.",
+                items: [
+                    { title: "Hududlar (Qat'iy Jazolar)", text: "Shariatda belgilangan muayyan jinoyatlar va ularning jazolari." },
+                    { title: "Qisas va Diya", text: "Odam o'ldirish va jarohat yetkazganlik uchun qasos yoki xun to'lash hukmlari." },
+                    { title: "Ta'zir Jazolari", text: "Qozining ixtiyoridagi va jamiyat manfaatini ko'zlab beriladigan jazo turlari." }
+                ]
+            }
+        };
+
+        // DATA: Mazhab Detailed Information
+        const mazhabData = {
+            hanafi: {
+                title: "Hanafiya Mazhabi",
+                founder: "Imom A'zam Abu Hanifa Nu'mon ibn Sobit (80-150 h.y.)",
+                text: "Hanafiya mazhabi islom dunyosida eng keng tarqalgan bo'lib, uning usulida Qur'on, Sunnat, Sahobalar qavli, Qiyos, Istihson, Ijmo' va Urf asosiy manbalar hisoblanadi. Imom Abu Hanifa va uning shogirdlari (Abu Yusuf, Muhammad ash-Shayboniy) fiqh ilmini har tomonlama tizimlashtirganlar."
+            },
+            maliki: {
+                title: "Molikiya Mazhabi",
+                founder: "Imom Molik ibn Anas (93-179 h.y.)",
+                text: "Molikiya mazhabi Madina ahlining amali (Amal ahli al-Madina) va Maslahat al-Mursala (jamiyat manfaati) uslubiga tayanishi bilan ajralib turadi. Shimoliy va G'arbiy Afrikada keng tarqalgan."
+            },
+            shafi: {
+                title: "Shofi'iya Mazhabi",
+                founder: "Imom Muhammad ibn Idris ash-Shofi'iy (150-204 h.y.)",
+                text: "Imom Shofi'iy 'Ar-Risola' asari bilan Usul al-Fiqh ilmining nazariy poydevorini qo'ydi. Ushbu mazhab Hadis va Qiyos o'rtasida aniq va qat'iy mezonlarni o'rnatgan."
+            },
+            hanbali: {
+                title: "Hanbaliya Mazhabi",
+                founder: "Imom Ahmad ibn Hanbal (164-241 h.y.)",
+                text: "Hanbaliya mazhabi strictly nasslarga (Qur'on va Hadis) va sahobalardan kelgan asarlarga tayanadi. Zaif hadisni ham shaxsiy qiyosdan ustun qo'yadi."
+            }
+        };
+
+        // DATA: Glossary
+        const glossaryTerms = [
+            { term: "Farz", desc: "Qat'iy dalil bilan buyurilgan, bajarilishi shart bo'lgan amal. Inkori kufrdir." },
+            { term: "Vajib", desc: "Zanniy dalil bilan buyurilgan, bajarilishi zarur bo'lgan amal (masalan, Vitr namozi)." },
+            { term: "Sunnat", desc: "Poyg'ambarimiz (s.a.v.) qilgan yoki ma'qullagan, bajarilishi savobli bo'lgan amallar." },
+            { term: "Mustahab", desc: "Shariatda maqtalgan, qilgan kishi savob oladigan, qilmagan malomat qilinmaydigan amal." },
+            { term: "Mubah", desc: "Qilish va qilmaslik teng bo'lgan amal (masalan, ovqatlanish, uxlash)." },
+            { term: "Makruh", desc: "Qilinmasligi so'ralgan, lekin qat'iy harom darajasida bo'lmagan amallar." },
+            { term: "Harom", desc: "Qat'iy dalil bilan taqiqlangan amal. Uni qilish katta gunohdir." },
+            { term: "Qiyos", desc: "Hukmi yo'q masalani hukmi bor masalaga o'xshashlik sababi (illat)ga ko'ra tenglashtirish." },
+            { term: "Ijmo'", desc: "Muayyan asrda islom mujtahidlarining biror shar'iy hukmga birdaniga ittifoq bo'lishi." },
+            { term: "Istihson", desc: "Kuchliroq va munosibroq dalil sababli umumiy qoidadan chekinib, maxsus hukm chiqarish." }
+        ];
+
+        // DATA: Quiz
+        const quizData = [
+            {
+                q: "1. Hanafiya mazhabida namozda Fotiha surasini o'qish hukmi qanday?",
+                options: ["Farz", "Vajib", "Sunnat", "Mustahab"],
+                correct: 1,
+                exp: "Hanafiya mazhabida namozda Qur'ondan biror oyat o'qish Farz, Fotiha surasini tayin qilib o'qish esa Vajib hisoblanadi."
+            },
+            {
+                q: "2. Qaysi fiqhiy manba 'Al-Kitob' nomi bilan mashhur?",
+                options: ["Al-Hidoya", "Badoi' us-Sanoi'", "Mukhtasar al-Quduri", "Fiqhi Kaydani"],
+                correct: 2,
+                exp: "Imom al-Quduriyning 'Mukhtasar al-Quduri' asari Hanafiya ulamolari orasida yuksak e'tirof sababli 'Al-Kitob' deb ataladi."
+            },
+            {
+                q: "3. Usul al-Fiqh ilmini birinchi bo'lib alohida fan sifatida tizimlashtirgan olim kim?",
+                options: ["Imom Abu Hanifa", "Imom Shofi'iy", "Imom Molik", "Burhoniddin Marg'inoni"],
+                correct: 1,
+                exp: "Imom Muhammad ibn Idris ash-Shofi'iy 'Ar-Risola' asarini yozish orqali Usul al-Fiqh fani poydevorini qo'ygan."
+            }
+        ];
+
+        let currentQuizScores = Array(quizData.length).fill(null);
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            switchTab('ibodat');
+            renderGlossary(glossaryTerms);
+            renderQuiz();
+
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.toggle('hidden');
+            });
+        });
+
+        // TAB SWITCHING LOGIC
+        function switchTab(key) {
+            const data = moduleData[key];
+            if (!data) return;
+
+            // Update Tab Buttons UI
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-emeraldDeep', 'text-white', 'border-emeraldDeep');
+                btn.classList.add('bg-white', 'text-slateText', 'border-gray-200');
+            });
+            const activeBtn = document.getElementById(`tab-${key}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slateText', 'border-gray-200');
+                activeBtn.classList.add('bg-emeraldDeep', 'text-white', 'border-emeraldDeep');
+            }
+
+            // Render Tab Content
+            const container = document.getElementById('tabContent');
+            let itemsHtml = data.items.map(item => `
+                <div class="p-4 rounded-xl bg-creamBg border border-gray-100 hover:border-goldAccent/40 transition">
+                    <h4 class="font-bold text-emeraldDeep text-base mb-1"><i class="fa-solid fa-angle-right text-goldAccent mr-2"></i>${item.title}</h4>
+                    <p class="text-xs sm:text-sm text-mutedText leading-relaxed">${item.text}</p>
+                </div>
+            `).join('');
+
+            container.innerHTML = `
+                <div class="mb-6">
+                    <h3 class="text-xl font-bold text-emeraldDeep">${data.title}</h3>
+                    <p class="text-sm text-mutedText mt-1">${data.desc}</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${itemsHtml}
+                </div>
+            `;
+        }
+
+        // RENDER GLOSSARY
+        function renderGlossary(list) {
+            const grid = document.getElementById('glossaryGrid');
+            grid.innerHTML = list.map(g => `
+                <div class="p-4 rounded-xl border border-gray-100 bg-creamBg/50 hover:bg-white hover:shadow-md transition">
+                    <span class="inline-block px-2.5 py-0.5 rounded text-xs font-semibold bg-goldAccent/20 text-goldHover mb-2">${g.term}</span>
+                    <p class="text-xs sm:text-sm text-slateText leading-relaxed">${g.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function filterGlossary() {
+            const query = document.getElementById('glossarySearch').value.toLowerCase();
+            const filtered = glossaryTerms.filter(item => 
+                item.term.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query)
+            );
+            renderGlossary(filtered);
+        }
+
+        // MAZHAB MODAL LOGIC
+        function openMazhabModal(key) {
+            const m = mazhabData[key];
+            if(!m) return;
+            const content = document.getElementById('mazhabModalContent');
+            content.innerHTML = `
+                <div class="text-center mb-6">
+                    <span class="w-12 h-12 rounded-full bg-goldAccent/20 text-goldHover flex items-center justify-center text-xl font-bold mx-auto mb-2">
+                        <i class="fa-solid fa-landmark"></i>
+                    </span>
+                    <h3 class="text-2xl font-bold text-emeraldDeep">${m.title}</h3>
+                    <p class="text-xs text-mutedText italic mt-1">${m.founder}</p>
+                </div>
+                <div class="text-sm text-slateText leading-relaxed space-y-4">
+                    <p class="bg-creamBg p-4 rounded-xl border border-gray-100">${m.text}</p>
+                    <p class="text-xs text-mutedText">Ushbu mazhab haqida qo'shimcha ilmiy darslik va manbalarni portalimiz kutubxonasi bo'limidan topishingiz mumkin.</p>
+                </div>
+            `;
+            document.getElementById('mazhabModal').classList.remove('hidden');
+        }
+
+        function closeMazhabModal() {
+            document.getElementById('mazhabModal').classList.add('hidden');
+        }
+
+        // BOOK PREVIEW MODAL
+        function readBook(type) {
+            const content = document.getElementById('bookModalContent');
+            let title = "", text = "";
+
+            if(type === 'al-hidoya') {
+                title = "Al-Hidoya — Burhoniddin Marg'inoni";
+                text = "«Al-Hidoya» asari islom huquqshunosligida eng yetuk qo'llanma bo'lib, fiqhiy masalalarning dalillari va mantiqiy asoslarini bayon etadi. Bugungi kunda dunyoning ko'plab islom universitetlarida asosiy darslik sifatida o'qitiladi.";
+            } else if(type === 'quduri') {
+                title = "Mukhtasar al-Quduri";
+                text = "Ushbu asar Hanafiya fiqhining matn bosqichidagi eng muhim kitoblaridan biridir. Unda ibodat va muomalot masalalari juda sodda va ravshan iboralar bilan qamrab olingan.";
+            } else {
+                title = "Badoi' us-Sanoi' — Alauddin al-Kosani";
+                text = "«Badoi' us-Sanoi'» kitobi fiqhiy masalalarni muqoyasa va muayyan boblar ketma-ketligida tizimlashtirgan eng nodir asardir.";
+            }
+
+            content.innerHTML = `
+                <h3 class="text-xl font-bold text-emeraldDeep mb-2">${title}</h3>
+                <div class="w-12 h-1 bg-goldAccent mb-4"></div>
+                <p class="text-sm text-slateText leading-relaxed mb-6">${text}</p>
+                <div class="bg-creamBg p-4 rounded-xl text-xs text-mutedText border border-gray-200">
+                    <i class="fa-solid fa-circle-info mr-1 text-goldAccent"></i> Talabalar uchun ushbu kitobning to'liq elektron nusxasi PDF shaklida kutubxonaga biriktirilgan.
+                </div>
+            `;
+            document.getElementById('bookModal').classList.remove('hidden');
+        }
+
+        function closeBookModal() {
+            document.getElementById('bookModal').classList.add('hidden');
+        }
+
+        function downloadAlert(bookName) {
+            alert(`"${bookName}" kitobining PDF fayli yuklab olinmoqda...`);
+        }
+
+        // QUIZ LOGIC
+        function renderQuiz() {
+            const container = document.getElementById('quizContainer');
+            let html = quizData.map((item, qIdx) => `
+                <div class="mb-8 pb-6 border-b border-gray-100 last:border-0 last:mb-0 last:pb-0">
+                    <p class="font-bold text-slateText text-base mb-3">${item.q}</p>
+                    <div class="space-y-2">
+                        ${item.options.map((opt, oIdx) => `
+                            <button onclick="selectAnswer(${qIdx}, ${oIdx})" id="q_${qIdx}_o_${oIdx}" 
+                                class="w-full text-left px-4 py-2.5 rounded-xl border border-gray-200 hover:border-emeraldDeep transition text-sm flex items-center justify-between">
+                                <span>${opt}</span>
+                                <i class="fa-regular fa-circle text-gray-300 status-icon"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+                    <div id="exp_${qIdx}" class="hidden mt-3 p-3 bg-creamBg rounded-xl text-xs text-mutedText border border-emeraldDeep/20">
+                        <strong>Izoh:</strong> ${item.exp}
+                    </div>
+                </div>
+            `).join('');
+
+            html += `
+                <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <button onclick="checkQuizResults()" class="w-full sm:w-auto px-6 py-3 bg-emeraldDeep text-goldAccent font-bold rounded-xl hover:bg-emeraldLight transition text-sm shadow">
+                        Natijani Tekshirish
+                    </button>
+                    <div id="quizScoreResult" class="text-sm font-bold text-emeraldDeep"></div>
+                </div>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        function selectAnswer(qIdx, oIdx) {
+            currentQuizScores[qIdx] = oIdx;
+            
+            // Highlight selected
+            quizData[qIdx].options.forEach((_, idx) => {
+                const btn = document.getElementById(`q_${qIdx}_o_${idx}`);
+                btn.classList.remove('bg-emeraldDeep/10', 'border-emeraldDeep', 'font-semibold');
+            });
+
+            const selectedBtn = document.getElementById(`q_${qIdx}_o_${oIdx}`);
+            selectedBtn.classList.add('bg-emeraldDeep/10', 'border-emeraldDeep', 'font-semibold');
+        }
+
+        function checkQuizResults() {
+            let correctCount = 0;
+
+            quizData.forEach((item, qIdx) => {
+                const selected = currentQuizScores[qIdx];
+                const expBox = document.getElementById(`exp_${qIdx}`);
+                expBox.classList.remove('hidden');
+
+                item.options.forEach((_, oIdx) => {
+                    const btn = document.getElementById(`q_${qIdx}_o_${oIdx}`);
+                    btn.disabled = true;
+
+                    if (oIdx === item.correct) {
+                        btn.classList.add('bg-green-100', 'border-green-500', 'text-green-800');
+                    } else if (selected === oIdx && selected !== item.correct) {
+                        btn.classList.add('bg-red-100', 'border-red-500', 'text-red-800');
+                    }
+                });
+
+                if (selected === item.correct) {
+                    correctCount++;
+                }
+            });
+
+            const resultDiv = document.getElementById('quizScoreResult');
+            resultDiv.innerHTML = `Siz ${quizData.length} ta savoldan <span class="text-goldHover text-lg font-extrabold">${correctCount}</span> tasiga to'g'ri javob berdingiz!`;
+        }
+
+        // GLOBAL SEARCH HANDLER
+        function handleGlobalSearch() {
+            const query = document.getElementById('globalSearch').value.toLowerCase().trim();
+            const resultsBox = document.getElementById('searchResults');
+
+            if (!query) {
+                resultsBox.classList.add('hidden');
+                return;
+            }
+
+            let matches = [];
+
+            // Search in Glossary
+            glossaryTerms.forEach(g => {
+                if (g.term.toLowerCase().includes(query) || g.desc.toLowerCase().includes(query)) {
+                    matches.push({ type: 'Istiloh', title: g.term, text: g.desc, link: '#istilohlar' });
+                }
+            });
+
+            // Search in Modules
+            Object.keys(moduleData).forEach(key => {
+                moduleData[key].items.forEach(item => {
+                    if (item.title.toLowerCase().includes(query) || item.text.toLowerCase().includes(query)) {
+                        matches.push({ type: 'Bo\'lim', title: item.title, text: item.text, link: '#bo-limlar' });
+                    }
+                });
+            });
+
+            if (matches.length > 0) {
+                resultsBox.innerHTML = matches.map(m => `
+                    <a href="${m.link}" onclick="document.getElementById('searchResults').classList.add('hidden')" class="block p-3 hover:bg-creamBg transition">
+                        <span class="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-goldAccent/20 text-goldHover">${m.type}</span>
+                        <h5 class="text-sm font-bold text-emeraldDeep mt-1">${m.title}</h5>
+                        <p class="text-xs text-mutedText truncate">${m.text}</p>
+                    </a>
+                `).join('');
+                resultsBox.classList.remove('hidden');
+            } else {
+                resultsBox.innerHTML = `<div class="p-4 text-xs text-mutedText text-center">Afsuski, hech narsa topilmadi.</div>`;
+                resultsBox.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
